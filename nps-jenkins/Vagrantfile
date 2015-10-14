@@ -17,6 +17,28 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.network :private_network, ip: "192.168.10.2"
 
+  config.vm.define "slave_ubuntu" do |slave_ubuntu|
+    slave_ubuntu.vm.box = 'ubuntu/trusty64'
+    slave_ubuntu.vm.hostname = 'nps-jenkins-slave-ubuntu'
+    slave_ubuntu.vm.network :private_network, ip: "192.168.100.2"
+
+    slave_ubuntu.vm.provision :chef_solo do |chef|
+      chef.json = {
+        mysql: {
+          server_root_password: 'rootpass',
+          server_debian_password: 'debpass',
+          server_repl_password: 'replpass'
+        }
+      }
+      
+      chef.run_list = [
+                       'recipe[nps-jenkins::slave]'
+                      ]
+    end
+  end
+
+  # slaves need to be up and java installed for the master to
+  # be able to connect.
   config.vm.define "master" do |master|
     master.vm.box = 'ubuntu/trusty64'
     master.vm.hostname = 'nps-jenkins-master'
@@ -37,23 +59,4 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  config.vm.define "slave_ubuntu" do |slave_ubuntu|
-    slave_ubuntu.vm.box = 'ubuntu/trusty64'
-    slave_ubuntu.vm.hostname = 'nps-jenkins-slave-ubuntu'
-    slave_ubuntu.vm.network :private_network, ip: "192.168.100.2"
-
-    slave_ubuntu.vm.provision :chef_solo do |chef|
-      chef.json = {
-        mysql: {
-          server_root_password: 'rootpass',
-          server_debian_password: 'debpass',
-          server_repl_password: 'replpass'
-        }
-      }
-      
-      chef.run_list = [
-                       'recipe[nps-jenkins::slave]'
-                      ]
-    end
-  end
 end
