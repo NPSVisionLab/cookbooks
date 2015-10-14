@@ -1,10 +1,13 @@
 #
 # Cookbook Name:: nps-jenkins
-# Recipe:: default
+# Recipe:: slave
 #
 # Copyright (C) 2015 Naval Postgraduate School
 #
 # All rights reserved - Do Not Redistribute
 #
 
-# empty - master setup is in master.rb
+# this should run apt-get update:
+include_recipe 'apt'
+
+package 'openjdk-7-jre'
