@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>Build the public portion of CVAC, as obtained from GitHub, on OSX.&#xd;
+Build any passed in branch.&#xd;
+If build succeeds, commit to devel branch.</description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>-1</daysToKeep>
+    <numToKeep>10</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.coravy.hudson.plugins.github.GithubProjectProperty plugin="github@1.8">
+      <projectUrl>git@github.com:NPSVisionLab/CVAC.git/</projectUrl>
+    </com.coravy.hudson.plugins.github.GithubProjectProperty>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>BRANCH_PARAM</name>
+          <description>Replace the DefaultString with master or devel or whatever branch to build.</description>
+          <defaultValue>DefaultString</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>IncreaseVersionPatch</name>
+          <description>select YES for feature branch builds that automatically commit back to the git devel branch</description>
+          <defaultValue>NO</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>BuildComponents</name>
+          <description>CMake build option defines</description>
+          <defaultValue>DefaultString</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>BRANCH_CHECKOUT</name>
+          <description>Name to give the checked out branch (devel-jobs sets this to devel).  Everyone else leaves it blank</description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.1">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://github.com/NPSVisionLab/CVAC.git</url>
+        <credentialsId>746ccdcd-48c0-4fc2-874a-fa451171ceec</credentialsId>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>${BRANCH_PARAM}</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions>
+      <hudson.plugins.git.extensions.impl.PerBuildTag/>
+      <hudson.plugins.git.extensions.impl.LocalBranch>
+        <localBranch>${BRANCH_CHECKOUT}</localBranch>
+      </hudson.plugins.git.extensions.impl.LocalBranch>
+      <hudson.plugins.git.extensions.impl.PreBuildMerge>
+        <options>
+          <mergeRemote>origin</mergeRemote>
+          <mergeTarget>${BRANCH_CHECKOUT}</mergeTarget>
+          <mergeStrategy>default</mergeStrategy>
+        </options>
+      </hudson.plugins.git.extensions.impl.PreBuildMerge>
+    </extensions>
+  </scm>
+  <assignedNode>osx &amp;&amp; build</assignedNode>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.plugins.cmake.CmakeBuilder plugin="cmakebuilder@1.9">
+      <sourceDir>.</sourceDir>
+      <buildDir>build_OSX</buildDir>
+      <installDir>install_OSX</installDir>
+      <buildType>Debug</buildType>
+      <otherBuildType>Release</otherBuildType>
+      <generator>Unix Makefiles</generator>
+      <makeCommand>make all doc</makeCommand>
+      <installCommand></installCommand>
+      <preloadScript></preloadScript>
+      <cmakeArgs>$BuildComponents
+-D BUILD_DOCUMENTATION=ON
+-D DOWNLOAD_3RDPARTY_PACKAGE=ON
+-D PYTHON_EXECUTABLE=/usr/bin/python2.7
+-D CMAKE_C_COMPILER=/usr/bin/cc
+-D CMAKE_C_FLAGS_RELEASE=-O
+-D CMAKE_VERBOSE_MAKEFILE=ON
+-D INCREASE_VERSION_PATCH=$IncreaseVersionPatch
+</cmakeArgs>
+      <projectCmakePath></projectCmakePath>
+      <cleanBuild>true</cleanBuild>
+      <cleanInstallDir>true</cleanInstallDir>
+      <builderImpl/>
+    </hudson.plugins.cmake.CmakeBuilder>
+  </builders>
+  <publishers>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>include/version.h</artifacts>
+      <latestOnly>false</latestOnly>
+      <allowEmptyArchive>false</allowEmptyArchive>
+    </hudson.tasks.ArtifactArchiver>
+  </publishers>
+  <buildWrappers/>
+</project>

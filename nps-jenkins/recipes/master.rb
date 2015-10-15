@@ -9,8 +9,7 @@
 
 include_recipe 'jenkins::master'
 
-jenkins_plugin 'cmakebuilder' do
-end
+include_recipe 'nps-jenkins::plugins'
 
 jenkins_user 'bogus' do
   password 'bogus'
@@ -47,11 +46,30 @@ jenkins_ssh_slave 'Ubuntu builder' do
 end
 
 # copy files/config.xml to the guest
-xml = File.join(Chef::Config[:file_cache_path], 'config.xml')
-cookbook_file xml do
-  source 'config.xml'
+osx_xml = File.join(Chef::Config[:file_cache_path], 'config.xml')
+cookbook_file osx_xml do
+  source 'build-osx/config.xml'
 end
 # Create a jenkins job (default action is `:create`)
 jenkins_job 'build_OSX' do
-  config xml
+  config osx_xml
+end
+ubuntu_xml = File.join(Chef::Config[:file_cache_path], 'config.xml')
+cookbook_file ubuntu_xml do
+  source 'build-ubuntu/config.xml'
+end
+# Create a jenkins job (default action is `:create`)
+jenkins_job 'build_Ubuntu' do
+  config ubuntu_xml
+end
+
+directory '/home/vagrant/workspace' do
+  owner 'jenkins'
+  action :create
+  mode '0777'
+end
+directory '/home/vagrant/workspace/build_Ubuntu' do
+  owner 'jenkins'
+  action :create
+  mode '0777'
 end
