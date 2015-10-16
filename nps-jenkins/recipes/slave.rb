@@ -11,3 +11,5 @@
 include_recipe 'apt'
 
 package 'openjdk-7-jre'
+package 'git'
+package 'cmake'

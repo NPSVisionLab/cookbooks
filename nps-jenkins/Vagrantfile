@@ -33,7 +33,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           server_repl_password: 'replpass'
         }
       }
-      
+      chef.verbose_logging = true      
       chef.run_list = [
                        'recipe[nps-jenkins::slave]'
                       ]
@@ -58,7 +58,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       
       chef.run_list = [
                        'recipe[nps-jenkins::master]',
-                       'recipe[nps-jenkins::plugins]'
+                       'recipe[nps-jenkins::plugins]',
                       ]
     end
   end
