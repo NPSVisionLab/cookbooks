@@ -1,0 +1,276 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson>
+  <disabledAdministrativeMonitors>
+    <string>hudson.diagnosis.ReverseProxySetupMonitor</string>
+    <string>jenkins.security.RekeySecretAdminMonitor</string>
+  </disabledAdministrativeMonitors>
+  <version>1.492</version>
+  <numExecutors>2</numExecutors>
+  <mode>NORMAL</mode>
+  <useSecurity>true</useSecurity>
+  <authorizationStrategy class="hudson.security.GlobalMatrixAuthorizationStrategy">
+    <permission>hudson.model.Computer.Configure:dmcamp</permission>
+    <permission>hudson.model.Computer.Configure:kle1</permission>
+    <permission>hudson.model.Computer.Configure:matz</permission>
+    <permission>hudson.model.Computer.Configure:trbatcha</permission>
+    <permission>hudson.model.Computer.Connect:dmcamp</permission>
+    <permission>hudson.model.Computer.Connect:kle1</permission>
+    <permission>hudson.model.Computer.Connect:matz</permission>
+    <permission>hudson.model.Computer.Connect:trbatcha</permission>
+    <permission>hudson.model.Computer.Create:dmcamp</permission>
+    <permission>hudson.model.Computer.Create:kle1</permission>
+    <permission>hudson.model.Computer.Create:matz</permission>
+    <permission>hudson.model.Computer.Create:trbatcha</permission>
+    <permission>hudson.model.Computer.Delete:dmcamp</permission>
+    <permission>hudson.model.Computer.Delete:kle1</permission>
+    <permission>hudson.model.Computer.Delete:matz</permission>
+    <permission>hudson.model.Computer.Delete:trbatcha</permission>
+    <permission>hudson.model.Computer.Disconnect:dmcamp</permission>
+    <permission>hudson.model.Computer.Disconnect:kle1</permission>
+    <permission>hudson.model.Computer.Disconnect:matz</permission>
+    <permission>hudson.model.Computer.Disconnect:trbatcha</permission>
+    <permission>hudson.model.Hudson.Administer:dmcamp</permission>
+    <permission>hudson.model.Hudson.Administer:kle1</permission>
+    <permission>hudson.model.Hudson.Administer:matz</permission>
+    <permission>hudson.model.Hudson.Administer:trbatcha</permission>
+    <permission>hudson.model.Hudson.ConfigureUpdateCenter:dmcamp</permission>
+    <permission>hudson.model.Hudson.ConfigureUpdateCenter:kle1</permission>
+    <permission>hudson.model.Hudson.ConfigureUpdateCenter:matz</permission>
+    <permission>hudson.model.Hudson.ConfigureUpdateCenter:trbatcha</permission>
+    <permission>hudson.model.Hudson.Read:dmcamp</permission>
+    <permission>hudson.model.Hudson.Read:kle1</permission>
+    <permission>hudson.model.Hudson.Read:matz</permission>
+    <permission>hudson.model.Hudson.Read:trbatcha</permission>
+    <permission>hudson.model.Hudson.RunScripts:dmcamp</permission>
+    <permission>hudson.model.Hudson.RunScripts:github</permission>
+    <permission>hudson.model.Hudson.RunScripts:kle1</permission>
+    <permission>hudson.model.Hudson.RunScripts:matz</permission>
+    <permission>hudson.model.Hudson.RunScripts:trbatcha</permission>
+    <permission>hudson.model.Hudson.UploadPlugins:dmcamp</permission>
+    <permission>hudson.model.Hudson.UploadPlugins:kle1</permission>
+    <permission>hudson.model.Hudson.UploadPlugins:matz</permission>
+    <permission>hudson.model.Hudson.UploadPlugins:trbatcha</permission>
+    <permission>hudson.model.Item.Build:dmcamp</permission>
+    <permission>hudson.model.Item.Build:kle1</permission>
+    <permission>hudson.model.Item.Build:matz</permission>
+    <permission>hudson.model.Item.Build:trbatcha</permission>
+    <permission>hudson.model.Item.Cancel:dmcamp</permission>
+    <permission>hudson.model.Item.Cancel:kle1</permission>
+    <permission>hudson.model.Item.Cancel:matz</permission>
+    <permission>hudson.model.Item.Cancel:trbatcha</permission>
+    <permission>hudson.model.Item.Configure:dmcamp</permission>
+    <permission>hudson.model.Item.Configure:kle1</permission>
+    <permission>hudson.model.Item.Configure:matz</permission>
+    <permission>hudson.model.Item.Configure:trbatcha</permission>
+    <permission>hudson.model.Item.Create:dmcamp</permission>
+    <permission>hudson.model.Item.Create:kle1</permission>
+    <permission>hudson.model.Item.Create:matz</permission>
+    <permission>hudson.model.Item.Create:trbatcha</permission>
+    <permission>hudson.model.Item.Delete:dmcamp</permission>
+    <permission>hudson.model.Item.Delete:kle1</permission>
+    <permission>hudson.model.Item.Delete:matz</permission>
+    <permission>hudson.model.Item.Delete:trbatcha</permission>
+    <permission>hudson.model.Item.Discover:dmcamp</permission>
+    <permission>hudson.model.Item.Discover:kle1</permission>
+    <permission>hudson.model.Item.Discover:matz</permission>
+    <permission>hudson.model.Item.Discover:trbatcha</permission>
+    <permission>hudson.model.Item.Read:dmcamp</permission>
+    <permission>hudson.model.Item.Read:kle1</permission>
+    <permission>hudson.model.Item.Read:matz</permission>
+    <permission>hudson.model.Item.Read:trbatcha</permission>
+    <permission>hudson.model.Item.Workspace:dmcamp</permission>
+    <permission>hudson.model.Item.Workspace:kle1</permission>
+    <permission>hudson.model.Item.Workspace:matz</permission>
+    <permission>hudson.model.Item.Workspace:trbatcha</permission>
+    <permission>hudson.model.Run.Delete:dmcamp</permission>
+    <permission>hudson.model.Run.Delete:kle1</permission>
+    <permission>hudson.model.Run.Delete:matz</permission>
+    <permission>hudson.model.Run.Delete:trbatcha</permission>
+    <permission>hudson.model.Run.Update:dmcamp</permission>
+    <permission>hudson.model.Run.Update:kle1</permission>
+    <permission>hudson.model.Run.Update:matz</permission>
+    <permission>hudson.model.Run.Update:trbatcha</permission>
+    <permission>hudson.model.View.Configure:dmcamp</permission>
+    <permission>hudson.model.View.Configure:kle1</permission>
+    <permission>hudson.model.View.Configure:matz</permission>
+    <permission>hudson.model.View.Configure:trbatcha</permission>
+    <permission>hudson.model.View.Create:dmcamp</permission>
+    <permission>hudson.model.View.Create:kle1</permission>
+    <permission>hudson.model.View.Create:matz</permission>
+    <permission>hudson.model.View.Create:trbatcha</permission>
+    <permission>hudson.model.View.Delete:dmcamp</permission>
+    <permission>hudson.model.View.Delete:kle1</permission>
+    <permission>hudson.model.View.Delete:matz</permission>
+    <permission>hudson.model.View.Delete:trbatcha</permission>
+    <permission>hudson.model.View.Read:dmcamp</permission>
+    <permission>hudson.model.View.Read:kle1</permission>
+    <permission>hudson.model.View.Read:matz</permission>
+    <permission>hudson.model.View.Read:trbatcha</permission>
+    <permission>hudson.scm.SCM.Tag:dmcamp</permission>
+    <permission>hudson.scm.SCM.Tag:kle1</permission>
+    <permission>hudson.scm.SCM.Tag:matz</permission>
+    <permission>hudson.scm.SCM.Tag:trbatcha</permission>
+  </authorizationStrategy>
+  <securityRealm class="hudson.security.HudsonPrivateSecurityRealm">
+    <disableSignup>true</disableSignup>
+    <enableCaptcha>false</enableCaptcha>
+  </securityRealm>
+  <disableRememberMe>false</disableRememberMe>
+  <projectNamingStrategy class="jenkins.model.ProjectNamingStrategy$DefaultProjectNamingStrategy"/>
+  <workspaceDir>${ITEM_ROOTDIR}/workspace</workspaceDir>
+  <buildsDir>${ITEM_ROOTDIR}/builds</buildsDir>
+  <markupFormatter class="hudson.markup.RawHtmlMarkupFormatter" plugin="antisamy-markup-formatter@1.0">
+    <disableSyntaxHighlighting>false</disableSyntaxHighlighting>
+  </markupFormatter>
+  <jdks/>
+  <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
+  <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>
+  <clouds/>
+  <slaves>
+    <slave>
+      <name>Win7 Build Slave</name>
+      <description>Tests building on Win7; installation of MSVS tool chain</description>
+      <remoteFS>C:\Jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+      <launcher class="hudson.slaves.JNLPLauncher">
+        <vmargs>-Xms512m -Xmx1024m</vmargs>
+      </launcher>
+      <label>win7 build</label>
+      <nodeProperties/>
+      <userId>trbatcha</userId>
+    </slave>
+    <slave>
+      <name>Ubuntu Build Slave</name>
+      <description>expects dependencies installed</description>
+      <remoteFS>/home/jenkins</remoteFS>
+      <numExecutors>2</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+      <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@1.5">
+        <host>172.20.81.117</host>
+        <port>22</port>
+        <credentialsId>a8213816-4fff-4aaf-b6ed-3cf93ebb8bd3</credentialsId>
+      </launcher>
+      <label>ubuntu build</label>
+      <nodeProperties/>
+      <userId>matz</userId>
+    </slave>
+    <slave>
+      <name>Win7 Deployment Slave</name>
+      <description>Tests deployment; clean installation of Win7 plus Python and Java JRE</description>
+      <remoteFS>C:\Jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+      <launcher class="hudson.slaves.JNLPLauncher">
+        <vmargs>-Xmx2048m</vmargs>
+      </launcher>
+      <label>win7 deployment</label>
+      <nodeProperties/>
+      <userId>trbatcha</userId>
+    </slave>
+    <slave>
+      <name>OSX Deployment Slave</name>
+      <description>OSX 10.6.8</description>
+      <remoteFS>/Users/Shared/Jenkins</remoteFS>
+      <numExecutors>2</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+      <launcher class="hudson.plugins.sshslaves.SSHLauncher" plugin="ssh-slaves@1.5">
+        <host>172.20.82.241</host>
+        <port>22</port>
+        <credentialsId>a8213816-4fff-4aaf-b6ed-3cf93ebb8bd3</credentialsId>
+        <jvmOptions>-Djava.awt.headless=true</jvmOptions>
+      </launcher>
+      <label>osx deployment</label>
+      <nodeProperties/>
+      <userId>matz</userId>
+    </slave>
+    <slave>
+      <name>Win8 Build Slave</name>
+      <description>Tests building on Win8; installation of MSVS tool chain</description>
+      <remoteFS>C:\Jenkins</remoteFS>
+      <numExecutors>1</numExecutors>
+      <mode>NORMAL</mode>
+      <retentionStrategy class="hudson.slaves.RetentionStrategy$Always"/>
+      <launcher class="hudson.slaves.JNLPLauncher"/>
+      <label>win8 build deployment</label>
+      <nodeProperties/>
+      <userId>trbatcha</userId>
+    </slave>
+  </slaves>
+  <quietPeriod>5</quietPeriod>
+  <scmCheckoutRetryCount>0</scmCheckoutRetryCount>
+  <views>
+    <hudson.model.AllView>
+      <owner class="hudson" reference="../../.."/>
+      <name>All</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+    </hudson.model.AllView>
+    <com.tikal.jenkins.plugins.multijob.views.MultiJobView plugin="jenkins-multijob-plugin@1.13">
+      <owner class="hudson" reference="../../.."/>
+      <name>Multijobs</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <com.tikal.jenkins.plugins.multijob.views.JobColumn/>
+        <com.tikal.jenkins.plugins.multijob.views.StatusColumn/>
+        <com.tikal.jenkins.plugins.multijob.views.WeatherColumn/>
+        <com.tikal.jenkins.plugins.multijob.views.LastSuccessColumn/>
+        <com.tikal.jenkins.plugins.multijob.views.LastFailureColumn/>
+        <com.tikal.jenkins.plugins.multijob.views.LastDurationColumn/>
+        <com.tikal.jenkins.plugins.multijob.views.ConsoleColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <recurse>false</recurse>
+      <columns defined-in="com.tikal.jenkins.plugins.multijob.views.MultiJobView">
+        <com.tikal.jenkins.plugins.multijob.views.JobColumn/>
+        <com.tikal.jenkins.plugins.multijob.views.StatusColumn/>
+        <com.tikal.jenkins.plugins.multijob.views.WeatherColumn/>
+        <com.tikal.jenkins.plugins.multijob.views.LastSuccessColumn/>
+        <com.tikal.jenkins.plugins.multijob.views.LastFailureColumn/>
+        <com.tikal.jenkins.plugins.multijob.views.LastDurationColumn/>
+        <com.tikal.jenkins.plugins.multijob.views.ConsoleColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+    </com.tikal.jenkins.plugins.multijob.views.MultiJobView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>CVAC</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>CVAC_github-build-OSX</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <includeRegex>CVAC.*</includeRegex>
+      <recurse>false</recurse>
+    </listView>
+  </views>
+  <primaryView>All</primaryView>
+  <slaveAgentPort>0</slaveAgentPort>
+  <label>osx build</label>
+  <nodeProperties/>
+  <globalNodeProperties/>
+  <noUsageStatistics>true</noUsageStatistics>
+</hudson>

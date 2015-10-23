@@ -35,7 +35,35 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       }
       chef.verbose_logging = true      
       chef.run_list = [
-                       'recipe[nps-jenkins::slave]'
+                       'recipe[nps-jenkins::slave_ubuntu]'
+                      ]
+    end
+  end
+
+  config.vm.define "slave_windows" do |slave_windows|
+    slave_windows.vm.box = 'codeadept/windows_2012_r2_chef'
+    slave_windows.vm.communicator = 'winrm'
+    slave_windows.vm.hostname = 'nps-jenkins-slave-windows'
+    #slave_windows.winrm.username="Administrator"
+    #slave_windows.winrm.password="password"
+    slave_windows.vm.network "forwarded_port", host: 33389, guest: 3389
+    slave_windows.vm.provider "virtualbox" do |v|
+      v.cpus = 2
+      v.memory = 2048
+    end
+
+    slave_windows.vm.provision :chef_solo do |chef|
+      chef.arguments = '-l debug'
+      chef.json = {
+        mysql: {
+          server_root_password: 'rootpass',
+          server_debian_password: 'debpass',
+          server_repl_password: 'replpass'
+        }
+      }
+      chef.verbose_logging = true      
+      chef.run_list = [
+                       'recipe[nps-jenkins::slave_windows]',
                       ]
     end
   end

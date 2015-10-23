@@ -32,7 +32,7 @@ end
  
 
 # More others 
-%w(cmakebuilder copyartifact envinject).each do |plugin| 
+%w(cmakebuilder copyartifact envinject windows-slaves).each do |plugin| 
   plugin, version = plugin.split('=') 
   jenkins_plugin plugin do 
     version version if version 

@@ -4,3 +4,12 @@ metadata
 
 cookbook 'jenkins',
   :git => 'https://github.com/chef-cookbooks/jenkins'
+
+cookbook 'windows',
+  :git => 'https://github.com/chef-cookbooks/windows'
+
+cookbook 'seven_zip',
+  :git => 'https://github.com/daptiv/seven_zip'
+
+cookbook 'visualstudio',
+  :git => 'https://github.com/daptiv/visualstudio'

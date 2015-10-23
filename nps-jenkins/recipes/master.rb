@@ -70,6 +70,26 @@ jenkins_ssh_slave 'Ubuntu builder' do
   credentials 'vagrant'
 end
 
+# Create a slave launched via SSH
+jenkins_jnlp_slave 'Windows builder' do
+  description 'Build on Windows'
+  remote_fs   '/home/vagrant'
+  labels      ['build', 'windows']
+  user        'vagrant'
+
+end
+
+jenkins_jnlp_slave 'Windows builder' do
+  action :connect
+end
+
+# Setup .gitconfig, needed on first chef
+template "#{node['jenkins']['master']['home']}/.gitconfig" do
+  source 'gitconfig.erb'
+  user node['jenkins']['master']['user']
+  group node['jenkins']['master']['group']
+end
+
 #template "#{node['jenkins']['master']['home']}/config.xml" do
 #    source "config.xml.erb"
 #end
@@ -93,3 +113,11 @@ jenkins_job 'build_Ubuntu' do
   config ubuntu_xml
 end
 
+windows_xml = File.join(Chef::Config[:file_cache_path], 'config.xml')
+cookbook_file windows_xml do
+  source 'build-win7/config.xml'
+end
+# Create a jenkins job (default action is `:create`)
+jenkins_job 'build_Win7' do
+  config windows_xml
+end
